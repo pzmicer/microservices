@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
+  name: my-deployment-2
 spec:
-  # replicas: 2
+  replicas: 2
   selector:
     matchLabels:
-      app: my-app
+      app: my-app-2
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-app-2
     spec:
       containers:
-      - image: svc-hello
-        name: my-svc
+      - image: svc-second
+        name: my-svc-2
         ports:
         - containerPort: 8080
         imagePullPolicy: Never

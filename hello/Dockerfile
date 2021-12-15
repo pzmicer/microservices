@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:latest
+FROM golang:1.17.4-alpine3.15
 
 WORKDIR /app
 
@@ -10,8 +10,17 @@ RUN go mod download
 
 COPY *.go ./
 
-RUN go build -o /docker-gs-ping
+RUN go build -o /gin-app
+
+
+FROM alpine
+
+WORKDIR /
+
+COPY --from=0 /gin-app /gin-app
 
 EXPOSE 8080
 
-CMD [ "/docker-gs-ping" ]
+# USER nonroot:nonroot
+
+ENTRYPOINT ["/gin-app"]

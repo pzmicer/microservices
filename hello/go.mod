@@ -1,4 +1,4 @@
-module github.com/microservices/hello
+module github.com/pzmicer/microservices/hello
 
 go 1.17
 
